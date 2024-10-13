@@ -22,6 +22,12 @@ Once those are installed navigate to the root directory of this app (the one wit
 `bundle install`
 This installs all the gems in the gemfile including the correct rails version
 
+Next setup a psql database
+Run `psql`
+then `CREATE DATABASE crashcon;` The name doesnt have to be crashcon but thats whats expected in this example you can change this in database.yml
+Then you must create a user role for the rails app to use in this example thats crashcon
+run `CREATE ROLE crashcon LOGIN PASSWORD 'ConceptualContinuity';` Note the role name and password can be anything but the example expects crashcon and ConceptualContinuity. Look in config/database.yml to change this but id reccomend using the same name as your rails app for the role name.
+
 
 Glossary
 gems - Ruby Packages

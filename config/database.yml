@@ -22,7 +22,11 @@ default: &default
 
 development:
   <<: *default
-  database: crashcon_development
+  database: crashcon #you need to make a crashcon database with psql
+  pool: 5
+  encoding: unicode
+  username: crashcon #username for psql server login, should not be super user
+  password: ConceptualContinuity #this is just for testing
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
