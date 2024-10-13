@@ -35,4 +35,9 @@ rvm - Ruby Version Manager used so you can have multiple ruby versions on your p
 brew - A Mac OS package manager called homebrew, can be found here https://brew.sh
 winget - The Microsoft Windows Package Manager more info is here https://learn.microsoft.com/en-us/windows/package-manager/winget/
 
+IMPORTANT NOTES
+Follow GDPR rules about how long to store data, what data to store and who has access. if you get more staff with admin access you should restrict what data they have access to based on what they need. for instance coms staff may not need access to medical info but med staff do.
+
+When setting up the PSQL DB on whatever hosting service you use for production ENCRYPT IT. Thats a MUST not a should or could.
+
 TODO: Add Deploy Instructions, Extra info and more
