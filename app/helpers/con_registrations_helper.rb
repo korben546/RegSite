@@ -1,0 +1,2 @@
+module ConRegistrationsHelper
+end

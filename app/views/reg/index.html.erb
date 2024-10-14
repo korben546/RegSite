@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-    <div>Hello <%= current_user.user.email %> </div>
+    <div>Hello <%= current_user.email %> </div>
     <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
     <p>View Or Create Registration (LINK GOES HERE)</p>
 <% else %>
@@ -9,6 +9,9 @@
 <h1>Registration</h1>
 <p>This is the page to create a reg and to access your registration</p>
 
+<% if user_signed_in? %>
+    <%= link_to "access your registration", con_registrations_path%>
+<% end %>
 
 
 <%= link_to 'Go Back Home', root_url(subdomain: false)%>

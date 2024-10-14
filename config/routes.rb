@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # the below block makes the reg page only accessibly via a subdomain, so its reached like this reg.crashcon.com
   constraints subdomain: "reg" do
+    resources :con_registrations
     root "reg#index", as: :reg_root
     devise_for :users # devise gem auto sets up needed routes for user login
   end
