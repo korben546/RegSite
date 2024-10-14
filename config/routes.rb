@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # the below block makes the reg page only accessibly via a subdomain, so its reached like this reg.crashcon.com
   constraints subdomain: "reg" do
     root "reg#index", as: :reg_root
+    devise_for :users # devise gem auto sets up needed routes for user login
   end
 
   # root must be under constraints or they wont get loaded
