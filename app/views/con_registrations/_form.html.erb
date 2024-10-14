@@ -58,7 +58,7 @@
 
   <div>
     <%= form.label :tel, style: "display: block" %>
-    <%= form.text_field :tel %>
+    <%= form.telephone_field :tel %>
   </div>
 
   <div>
@@ -70,6 +70,17 @@
     <%= form.label :medical, style: "display: block" %>
     <%= form.text_field :medical %>
   </div>
+
+  <% if current_user.admin? %>
+    <div>
+      <%= form.label :accepted, style: "display: block" %>
+      <%= form.check_box :accepted %>
+    </div>
+    <div>
+      <%= form.label :user_id, style: "display: block" %>
+      <%= form.number_field :user_id %>
+    </div>
+  <% end %>
 
   <div>
     <%= form.submit %>

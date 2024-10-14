@@ -1,5 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
+<% if current_user.admin? %>
+  <h2 style="color:#FF0000">ADMIN VERSION</h2> 
+<% end %>
+
 <%= render @con_registration %>
 
 <div>

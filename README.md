@@ -42,7 +42,9 @@ user = User.find_by(email: 'test@email.com')
 user.update(confirmed_at: Time.now)
 user.update_attribute :admin, true
 
-as an admin when logged in you see entire list of registrations in index view,
+as an admin when logged in you see entire list of registrations in index view, with database id and user_id
+you can edit any reg and edit anything except for the database id (unsure on if user_id edits work)
+creating a new reg acts as normal, you currently cannot assign it to another user cos of how its handled, I will add this
 
 Glossary
 gems - Ruby Packages

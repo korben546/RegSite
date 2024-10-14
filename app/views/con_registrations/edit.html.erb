@@ -1,6 +1,9 @@
 <% content_for :title, "Editing con registration" %>
 
 <h1>Editing con registration</h1>
+<% if current_user.admin? %>
+  <h2 style="color:#FF0000">ADMIN VERSION</h2> 
+<% end %>
 
 <%= render "form", con_registration: @con_registration %>
 

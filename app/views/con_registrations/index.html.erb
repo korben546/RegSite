@@ -3,6 +3,9 @@
 <% content_for :title, "Con registrations" %>
 
 <h1>Con registrations</h1>
+<% if current_user.admin? %>
+  <h2 style="color:#FF0000">ADMIN VERSION</h2> 
+<% end %>
 
 <div id="con_registrations">
   <% @con_registrations.each do |con_registration| %>

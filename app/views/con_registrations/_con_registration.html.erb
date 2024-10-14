@@ -1,4 +1,14 @@
 <div id="<%= dom_id con_registration %>">
+  <% if current_user.admin? %>
+    <p>
+      <strong>id:</strong>
+      <%= con_registration.id%>
+    </p>
+    <p>
+      <strong>user_id:</strong>
+      <%= con_registration.user_id%>
+    </p>
+  <% end %>
   <p>
     <strong>Full name:</strong>
     <%= con_registration.full_name %>
