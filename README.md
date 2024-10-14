@@ -31,6 +31,7 @@ run `CREATE ROLE crashcon LOGIN PASSWORD 'ConceptualContinuity';` Note the role 
 
 edit your /etc/hosts file to have the line after the normal localhost entry DO NOT DELETE OR REPLACE ANYTHING.
 `127.0.0.1       reg.localhost`
+`127.0.0.1       admin.localhost`
 This needs doing for any extra subdomains you create, this allows you to access them when runnng the site locally for dev purposes.
 
 the site should be accessed at http://localhost:3000
