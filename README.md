@@ -36,6 +36,14 @@ This needs doing for any extra subdomains you create, this allows you to access 
 the site should be accessed at http://localhost:3000
 or http://reg.localhost:3000
 
+use ruby console to give your user admin and bypass email confimation
+
+user = User.find_by(email: 'test@email.com')
+user.update(confirmed_at: Time.now)
+user.update_attribute :admin, true
+
+as an admin when logged in you see entire list of registrations in index view,
+
 Glossary
 gems - Ruby Packages
 rvm - Ruby Version Manager used so you can have multiple ruby versions on your pc at once

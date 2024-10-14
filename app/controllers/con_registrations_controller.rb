@@ -1,13 +1,24 @@
 class ConRegistrationsController < ApplicationController
+  MAX_REG_TO_DISPLAY = 1 # removes magic number and limits number of registrations on index to the most recent one
   before_action :set_con_registration, only: %i[ show edit update destroy ]
 
   # GET /con_registrations or /con_registrations.json
   def index
-    @con_registrations = current_user.con_registrations.order(created_at: :desc).limit(1)
+    @con_registrations = ConRegistration.visible_to_user(current_user) # checks against scope in model to only return most recent reg to normal users
   end
 
   # GET /con_registrations/1 or /con_registrations/1.json
   def show
+    if current_user.admin? # allows admins to edit all
+      @con_registration = ConRegistration.find(params[:id])
+    else
+      @con_registration = ConRegistration.visible_to_user(current_user).first
+      if @con_registration.nil? || @con_registration.id.to_s != params[:id] # Check if @con_registration is present and matches the requested id
+        head :forbidden
+      else
+        render :show
+      end
+    end
   end
 
   # GET /con_registrations/new
@@ -17,6 +28,16 @@ class ConRegistrationsController < ApplicationController
 
   # GET /con_registrations/1/edit
   def edit
+    if current_user.admin? # allows admins to edit all
+      @con_registration = ConRegistration.find(params[:id])
+    else
+      @con_registration = ConRegistration.visible_to_user(current_user).first
+      if @con_registration.nil? || @con_registration.id.to_s != params[:id] # Check if @con_registration is present and matches the requested id
+        head :forbidden
+      else
+        render :edit
+      end
+    end
   end
 
   # POST /con_registrations or /con_registrations.json
@@ -53,17 +74,17 @@ class ConRegistrationsController < ApplicationController
     @con_registration.destroy!
 
     respond_to do |format|
-      format.html { redirect_to con_registrations_path, status: :see_other, notice: "Con registration was successfully destroyed." }
+      format.html { redirect_to con_registrations_path, status: :see_other, notice: "Con registration was irreversably destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_con_registration
-      begin
-        @con_registration = current_user.con_registration.find(params[:id])
-      rescue
+      @con_registration = ConRegistration.visible_to_user(current_user).first
+
+      if @con_registration.nil?
         head :forbidden
       end
     end
