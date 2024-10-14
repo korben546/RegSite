@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   # the below block makes the reg page only accessibly via a subdomain, so its reached like this reg.crashcon.com
   constraints subdomain: "reg" do
     root "reg#index", as: :reg_root
+
+    resources :users, only: [ :show, :create, :destroy, :update, :edit, :new ]
+
+    # defines how to handle get and post requests at reg.crashcon/login and logout this follows rest
+    get "/login:", to: "usrsession#login"
+    get "/logout", to: "usrsession#destroy"
+    post "/login", to: "usrsession#create"
+    post "/logout", to: "usrsession#destroy"
   end
 
   # root must be under constraints or they wont get loaded

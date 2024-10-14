@@ -49,4 +49,6 @@ When setting up the PSQL DB on whatever hosting service you use for production E
 
 Rails follows the MVC pattern (Model View Controller)
 
+Using bcrypt gem for salt and hash of passwords
+
 TODO: Add Deploy Instructions, Extra info and more

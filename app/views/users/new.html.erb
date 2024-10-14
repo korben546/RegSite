@@ -1,0 +1,12 @@
+<h1>Account Creation Page </h1>
+<p>This is where you create your user account for registration to the con </p>
+<strong>Note: This only creates an account for you to register and DOES NOT register you for the convention</strong>
+
+<%= form_for @user do |form| %>
+    <%= form.label :email %>
+    <%= form.email_field %>
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+    <%= form.label :password %>
+    <%= form.password_field :password%>
+    <%= form.sumbit "Create User Account" %>
