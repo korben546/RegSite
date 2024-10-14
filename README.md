@@ -47,4 +47,6 @@ Follow GDPR rules about how long to store data, what data to store and who has a
 
 When setting up the PSQL DB on whatever hosting service you use for production ENCRYPT IT. Thats a MUST not a should or could.
 
+Rails follows the MVC pattern (Model View Controller)
+
 TODO: Add Deploy Instructions, Extra info and more
