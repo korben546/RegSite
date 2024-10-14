@@ -1,5 +1,6 @@
 class ConRegistrationsController < ApplicationController
   MAX_REG_TO_DISPLAY = 1 # removes magic number and limits number of registrations on index to the most recent one
+  before_action :authenticate_user!
   before_action :set_con_registration, only: %i[ show edit update destroy ]
 
   # GET /con_registrations or /con_registrations.json
