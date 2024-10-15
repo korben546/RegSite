@@ -9,6 +9,10 @@ Local Setup Guide
 
 SOME OF THIS ASSUMES LINUX OR UNIX, IF RUNNING WINDOWS LET ME KNOW
 Install ruby 3.3.5, I prefer using RVM to do this but use whatever method you like
+for windows you can use
+`winget install RubyInstallerTeam.Ruby.3.2`
+or visit https://rubyinstaller.org and download the ruby installer for windows ensure its 3.3.5
+
 Install PostgreSQL version 14
 On Mac OS use
 `brew install PostgreSQL@14`
@@ -29,10 +33,36 @@ then `CREATE DATABASE crashcon;` The name doesnt have to be crashcon but thats w
 Then you must create a user role for the rails app to use in this example thats crashcon
 run `CREATE ROLE crashcon LOGIN PASSWORD 'ConceptualContinuity';` Note the role name and password can be anything but the example expects crashcon and ConceptualContinuity. Look in config/database.yml to change this but id reccomend using the same name as your rails app for the role name.
 
+for UNIX like systems
 edit your /etc/hosts file to have the line after the normal localhost entry DO NOT DELETE OR REPLACE ANYTHING.
 `127.0.0.1       reg.localhost`
 `127.0.0.1       admin.localhost`
-This needs doing for any extra subdomains you create, this allows you to access them when runnng the site locally for dev purposes.
+
+for WINDOWS systems
+open your text editor as administrator (right click then click run as administrator)
+open the hosts file found here C:\Windows\System32\drivers\etc\hosts you may need to change the file type in the open window from Text Documents to all Files
+DO NOT DELETE OR REPLACE ANYTHING
+add the lines
+`127.0.0.1       reg.localhost`
+`127.0.0.1       admin.localhost`
+below the lines already in the file
+
+for WINDOWS IF YOU DONT WANT TO USE COMMANDLINE
+install Microsoft PowerToys either from store here https://apps.microsoft.com/detail/xp89dcgq3k6vld?hl=en-gb&gl=GB or from github here https://aka.ms/installpowertoys
+open the powertoys application
+navigate to Hosts File Editor on the side bar   (if you cant find it make sure Hosts File Editor is set to on in powertoy settings)
+click launch hosts file editor
+click new entry
+for address use 127.0.0.1
+then for hosts use reg.localhost
+make sure active toggle is on then click add
+repeat but use
+address 127.0.0.1
+hosts admin.localhost
+
+The above hosts changes allow for you to navigate to the subdomains of the app when running locally, the steps must be repeated for any new subdomains.
+
+USAGE
 
 the site should be accessed at http://localhost:3000
 or http://reg.localhost:3000
@@ -48,7 +78,7 @@ as an admin when logged in you see entire list of registrations on normal reg vi
 you can edit any reg and edit anything except for the database id (unsure on if user_id edits work)
 you can create new registrations and assign them 
 
-on admin site you can search equal to or contains per attribute and also a global search
+on admin site you can search equal to or contains per attribute and also a global search and filter based on if the reg is not accepted
 
 
 Glossary
