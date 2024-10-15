@@ -1,0 +1,11 @@
+<h1>ADMIN SEARCH</h1>
+<p>use this to search based on any data in a reg (except medical and disability)</p>
+<%= render "search_form" %>
+
+<div id="con_registrations">
+  <% @registrations.each do |con_registration| %>
+    <p>
+      <%= link_to "#{con_registration.full_name} #{con_registration.fur_name}'s #{con_registration.created_at} crash con registration", con_registration %>
+    </p>
+  <% end %>
+</div>

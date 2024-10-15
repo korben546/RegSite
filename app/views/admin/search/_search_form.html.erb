@@ -1,0 +1,51 @@
+<%= form_with url: admin_search_index_path, method: :get, local: true do %>
+
+    <div class="form-group">
+        <!-- Attribute Selection Dropdown -->
+        <%= label_tag :attribute, "Search by attribute" %>
+        <%= select_tag :attribute, options_for_select([ 
+            ['Database ID', 'id'],
+            ['User ID', 'user_id'],  
+            ['Full Name', 'full_name'], 
+            ['Fur Name', 'fur_name'], 
+            ['Telephone', 'tel'],
+            ['Address Line 1', 'address_line1'],
+            ['Address Line 2', 'address_line2'],
+            ['Postcode', 'postcode'],
+            ['City', 'city'],
+            ['County', 'county'],
+            ['Country', 'country']
+        ], selected: params[:attribute]) %>
+    </div>
+
+    <div class="form-group">
+        <!-- Query Selection Dropdown -->
+        <%= label_tag :query_type, "Search condition" %>
+        <%= select_tag :query_type, options_for_select([
+            ['Equals to', 'eq'], 
+            ['Contains', 'cont']
+        ], selected: params[:query_type]) %>
+    </div>
+
+    <div class="form-group">
+        <!-- Value Input Field -->
+        <%= label_tag :value, "Enter search value" %>
+        <%= text_field_tag :value, params[:value] %>
+    </div>
+
+    <!-- Search button -->
+    <%= submit_tag "Search by Attribute" %>
+
+    <hr>
+
+    <!-- Global Contains Search -->
+    <div class="form-group">
+        <%= label_tag :global_search, "Search across all attributes (contains)" %>
+        <%= text_field_tag :global_search, params[:global_search] %>
+    </div>
+
+    <!-- Search button  -->
+    <%= submit_tag "Search All Attributes" %>
+
+
+<% end %>

@@ -19,6 +19,14 @@ class ConRegistration < ApplicationRecord
     end
   }
 
+  def self.ransackable_associations(auth_object = nil)
+    [ "user" ]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "accepted", "address_line1", "address_line2", "city", "country", "county", "created_at", "date_of_birth", "full_name", "fur_name", "id", "postcode", "tel", "updated_at", "user_id" ]
+  end
+
   def self.per_con
     where("created_at < ?", CON_DATE)
   end

@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   end
 
   constraints subdomain: "admin" do
-    resources :con_registrations
-    root "admin#index", as: :admin_root
+    namespace :admin do
+      resources :con_registrations
+      resources :search, only: [ :index ]
+      root "admin#index", as: :admin_root
+    end
   end
 
   # root must be under constraints or they wont get loaded
