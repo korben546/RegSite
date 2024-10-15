@@ -1,7 +1,7 @@
 class ConRegistration < ApplicationRecord
   MAX_NUM_OF_REG_PER_USER_PER_CON = 1 # all caps variables are used for constants, you should use constants instead of magic numbers, this is the number of registrations per con period
-  CON_DATE = Time.new(2024, 12, 12, 0, 0) # temporary test date
-  PAYMENT_PERIOD_BEGIN = Time.new(2024, 12, 12, 0, 0) # temporary payment period (if people have from september 12 to pay start it then dont have it be the deadline)
+  CON_DATE = Time.new(2024, 12, 12, 0, 0) # temp test date, should be accessed in db instead and all shoule be updated. current behavious is as soon as the con date is reached a new reg can be made
+  PAYMENT_PERIOD_BEGIN = Time.new(2024, 12, 12, 0, 0) # temporary payment period (if people have from september 12 to pay start it then, dont have it be the payment deadline)
 
   belongs_to :user
 

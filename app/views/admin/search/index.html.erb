@@ -5,7 +5,7 @@
 <div id="con_registrations">
   <% @registrations.each do |con_registration| %>
     <p>
-      <%= link_to "#{con_registration.full_name} #{con_registration.fur_name}'s #{con_registration.created_at} crash con registration", con_registration %>
+      <%= link_to "#{con_registration.full_name} #{con_registration.fur_name}'s #{con_registration.created_at} crash con registration", con_registration_path(con_registration) %>
     </p>
   <% end %>
 </div>

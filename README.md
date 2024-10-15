@@ -36,6 +36,7 @@ This needs doing for any extra subdomains you create, this allows you to access 
 
 the site should be accessed at http://localhost:3000
 or http://reg.localhost:3000
+or http://admin.localhost:3000
 
 use ruby console to give your user admin and bypass email confimation
 
@@ -43,9 +44,12 @@ user = User.find_by(email: 'test@email.com')
 user.update(confirmed_at: Time.now)
 user.update_attribute :admin, true
 
-as an admin when logged in you see entire list of registrations in index view, with database id and user_id
+as an admin when logged in you see entire list of registrations on normal reg view index view, with database id and user_id
 you can edit any reg and edit anything except for the database id (unsure on if user_id edits work)
-creating a new reg acts as normal, you currently cannot assign it to another user cos of how its handled, I will add this
+you can create new registrations and assign them 
+
+on admin site you can search equal to or contains per attribute and also a global search
+
 
 Glossary
 gems - Ruby Packages
@@ -58,6 +62,21 @@ Follow GDPR rules about how long to store data, what data to store and who has a
 
 When setting up the PSQL DB on whatever hosting service you use for production ENCRYPT IT. Thats a MUST not a should or could.
 
-Rails follows the MVC pattern (Model View Controller)
+Rails follows the MVC pattern (Model View Controller) directories follow this concept.
+Actions in controllers follow REST as best as possible
+
+Avoid the use of magic numbers for example
+`ConRegistrations.limit(1)` is bad practice, it makes it harder to read and maintain your app as when you need to update that number you wont be able to find it and may have to edit it in many locations
+Instead at the top of the method define a constant, to do this make the variable name in all caps like this
+`MAX_NUMBER_OF_REG_PER_CON = 1`
+`ConRegistrations.limit(MAX_NUMBER_OF_REG_PER_CON)`
+Now you can use that constant multiple times and edit just one thing to change it for all instances where its used
+It must be all caps and a constant as that means the value is unable to be changed whilst the app is running, this is more safe and best practice
+
+
 
 TODO: Add Deploy Instructions, Extra info and more
+TODO: the reg creation magic numbers (except max reg per con) need moving into a database entry that is queried. also need to add reg open boolean
+TODO: Rename accepted to approved and add some flavour text about approval
+TODO: Setup mass mailer
+TODO: Add extra admin features (statistics,see all pending approval, set con dates and deadlines and update some)

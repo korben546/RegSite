@@ -7,12 +7,10 @@ Rails.application.routes.draw do
     root "reg#index", as: :reg_root
   end
 
-  constraints subdomain: "admin" do
-    namespace :admin do
-      resources :con_registrations
-      resources :search, only: [ :index ]
-      root "admin#index", as: :admin_root
-    end
+  scope module: "admin", subdomain: "admin" do
+    resources :con_registrations
+    resources :search, only: [ :index ]
+    get "/", to: "admin#index", as: :admin_root
   end
 
   # root must be under constraints or they wont get loaded

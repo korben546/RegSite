@@ -3,6 +3,7 @@ module Admin
     before_action :authenticate_user!
     before_action :has_admin?
     def index
+      render "admin/index"
     end
 
     private
