@@ -79,9 +79,12 @@ or http://admin.localhost:3000
 
 use ruby console to give your user admin and bypass email confimation
 
-user = User.find_by(email: 'test@email.com')
-user.update(confirmed_at: Time.now)
-user.update_attribute :admin, true
+run
+`bundle exec rails console`
+
+`user = User.find_by(email: 'test@email.com')`
+`user.update(confirmed_at: Time.now)`
+`user.update_attribute :admin, true`
 
 as an admin when logged in you see entire list of registrations on normal reg view index view, with database id and user_id
 you can edit any reg and edit anything except for the database id (unsure on if user_id edits work)

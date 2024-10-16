@@ -36,3 +36,23 @@ So to go to the home page of the app it does a GET request at /
 The URI Pattern is where it expects the request, the home page route expects the request to be done at / but the con registrations route expects it at /con_registrations with an id on the end which is passed as a parameter to the controller action.
 
 The controller action is the location of the controller and what action in the controller that the request should be processed by.
+
+## Using the Rails Console
+there’s a console you can either use when the app is running or not with a different terminal window it lets you run commands on the fly and get their results.
+I’ll document it better but you can do something like create a user manually and update the contents of their table in the console or edit some functions and variables.
+
+What I tend to do with it is use it to check the state of things and what instructions return to debug them and to understand the data structure. For instance there’s a scope that makes only the last reg they made visible to the user and only their own reg. that returns the reg as a data structure when it’s passed in the user so
+If you have a variable like this
+var_1 = “super cool string”
+Typing
+var_1 in the terminal will give the output
+“super cool string”
+
+If the variable is an object or hash it will return something that looks like this <#user 28373837286>
+To display the info in that object append .inspect to it
+
+A more complex example I did is
+
+I set a user variable based on a query to pull a user based on email address then put that into the scope rather than current_user as that doesn’t work from command line.
+Then it returned the con_registrations that the user could see
+That way I verified that the instruction worked
