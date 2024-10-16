@@ -7,16 +7,17 @@ Rails.application.routes.draw do
     root "reg#index", as: :reg_root
   end
 
-  scope module: "admin", subdomain: "admin" do
+  constraints subdomain: "admin" do
+    root "admin/admin#index", as: :admin_root
     resources :con_registrations
-    resources :search, only: [ :index ]
-    get "/", to: "admin#index", as: :admin_root
+    resources :search, only: [ :index ], controller: "admin/search"
   end
 
+  root "home#index"
   # root must be under constraints or they wont get loaded
   # The default page and action to load when the site is reached like this www.crashcon.com
-  root "home#index"
-  get "home/index"
+  # root to: "home#index"
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
